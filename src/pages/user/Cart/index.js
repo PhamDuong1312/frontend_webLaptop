@@ -146,7 +146,7 @@ const Cart = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Giỏ hàng</li>
                         </ul>
                     </div>
@@ -172,11 +172,11 @@ const Cart = () => {
                                             <thead>
                                                 <tr>
                                                     <th className="li-product-remove"></th>
-                                                    <th className="li-product-thumbnail">images</th>
-                                                    <th className="cart-product-name">Product</th>
-                                                    <th className="li-product-price">Unit Price</th>
-                                                    <th className="li-product-quantity">Quantity</th>
-                                                    <th className="li-product-subtotal">Total</th>
+                                                    <th className="li-product-thumbnail">Hình ảnh</th>
+                                                    <th className="cart-product-name">Tên sản phẩm</th>
+                                                    <th className="li-product-price">Giá </th>
+                                                    <th className="li-product-quantity">Số lượng</th>
+                                                    <th className="li-product-subtotal">Thành tiền</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -186,7 +186,7 @@ const Cart = () => {
 
                                                         <tr>
                                                             <td className="li-product-remove"><a onClick={(e) => handleDeleteToCart(e, item._id)} href="#" ><i className="fa fa-times" style={{ fontSize: 24 }} /></a></td>
-                                                            <td className="li-product-thumbnail"><Link to={`/product/${item.product._id}`}><img src={getImageProduct(item.product.image)} /></Link></td>
+                                                            <td className="li-product-thumbnail"><Link to={`/product/${item.product._id}`}><img style={{width:200}} src={getImageProduct(item.product.image)} /></Link></td>
                                                             <td className="li-product-name"><Link to={`/product/${item.product._id}`}>{item.product.name}</Link></td>
                                                             <td className="li-product-price"><span className="amount">{VND.format(giagiam)}</span></td>
                                                             <td className="quantity">
@@ -208,10 +208,10 @@ const Cart = () => {
                                     <div className="row">
                                         <div className="col-md-5 ml-auto">
                                             <div className="cart-page-total">
-                                                <h2>Cart totals</h2>
+                                                <h2>Tổng giỏ hàng</h2>
                                                 <ul>
-                                                    <li>Subtotal <span>{VND.format(total)}</span></li>
-                                                    <li>Total <span>{VND.format(total)}</span></li>
+                                                    <li>Tổng tiền <span>{VND.format(total)}</span></li>
+                                                    <li>Thành tiền <span>{VND.format(total)}</span></li>
                                                 </ul>
                                                 <a href="#" data-toggle="modal" data-target="#exampleModal">Mua hàng</a>
                                             </div>

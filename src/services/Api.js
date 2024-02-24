@@ -56,6 +56,8 @@ export const orderApi = (data,config)=>Http.post('/order/create',data,config)
 export const getOrderUser = (id,config)=>Http.get('/order/user/'+id,config)
 export const getDetailOrder = (id,config)=>Http.get('/order/'+id,config)
 export const getOrders = (config)=>Http.get('/order',config)
+export const getOrdersByDate = (config)=>Http.get('/order/bydate',config)
+
 
 export const deleteOrder = (id,config)=>Http.delete('/order/delete/'+id,config)
 export const editOrder = (id,data,config)=>Http.put('/order/edit/'+id,data,config)

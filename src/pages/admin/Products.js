@@ -1,7 +1,7 @@
 import { Link, useSearchParams,useNavigate } from "react-router-dom"
 import React from "react"
 import { deleteManyProduct, deleteProduct, getAllProducts } from "../../services/Api"
-import { getImageProduct } from "../../ultils"
+import { VND, getImageProduct } from "../../ultils"
 import Pagination from "../../shared/components/layout/Panigation"
 
 const Product = () => {
@@ -176,11 +176,11 @@ const Product = () => {
 
                                                     <td >{index + 1}</td>
                                                     <td >{item.name}</td>
-                                                    <td >{item.price}</td>
+                                                    <td >{VND.format(item.price)}</td>
                                                     <td ><img width={130} height={180} src={getImageProduct(item.image)} />
                                                     </td>
                                                     <td >{item.status ? <span className="label label-success">Còn hàng</span> : <span className="label label-danger">Hết hàng</span>}</td>
-                                                    <td >{item.categoryId.name}</td>
+                                                    <td >{item.categoryId?.name}</td>
                                                     <td className="form-group" >
                                                         <Link to={`/products/edit/${item._id}`} className="btn btn-primary"><i className="glyphicon glyphicon-pencil" /></Link>
                                                         <a href="" onClick={(e) => handleDelete(e, item._id)} className="btn btn-danger"><i className="glyphicon glyphicon-remove" /></a>

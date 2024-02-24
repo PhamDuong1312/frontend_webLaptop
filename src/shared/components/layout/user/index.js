@@ -24,7 +24,8 @@ import Order from "../../../../pages/user/Order/order"
 import ForgotPassword from "../../../../pages/user/ForgotPassword"
 import MyAccout from "../../../../pages/user/MyAccout"
 import ChangePassword from "../../../../pages/user/ChangePassword"
-
+import Aos from "aos"
+import "aos/dist/aos.css"
 
 const User = () => {
     const user = useSelector(({ Auth }) => Auth.user)
@@ -53,6 +54,8 @@ const User = () => {
         setTimeout(() => {
             document.getElementById("script").appendChild(script,script2)
         }, 500)
+        Aos.init()
+        Aos.refresh()
     }, [])
 
     return (

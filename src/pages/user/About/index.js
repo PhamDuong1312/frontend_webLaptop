@@ -7,7 +7,7 @@ const About = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">About </li>
                         </ul>
                     </div>
@@ -20,10 +20,10 @@ const About = () => {
                             {/* About Text Start */}
                             <div className="col-lg-6 order-last order-lg-first">
                                 <div className="about-text-wrap">
-                                    <h2><span>Provide Best</span>Product For You</h2>
-                                    <p>We provide the best Beard oile all over the world. We are the worldd best store in indi for Beard Oil. You can buy our product without any hegitation because they truste us and buy our product without any hagitation because they belive and always happy buy our product.</p>
-                                    <p>Some of our customer say’s that they trust us and buy our product without any hagitation because they belive us and always happy to buy our product.</p>
-                                    <p>We provide the beshat they trusted us and buy our product without any hagitation because they belive us and always happy to buy.</p>
+                                    <h2><span>Dịch vụ tốt nhất</span>Sản phẩm dành cho bạn</h2>
+                                    <p>Chúng tôi cung cấp loại dầu râu tốt nhất trên toàn thế giới. Chúng tôi là cửa hàng tốt nhất thế giới về Laptop. Bạn có thể mua sản phẩm của chúng tôi mà không phải đắn đo vì họ tin tưởng chúng tôi và mua sản phẩm của chúng tôi mà không hề đắn đo vì họ tin tưởng và luôn vui vẻ khi mua sản phẩm của chúng tôi.</p>
+                                    <p>Một số khách hàng của chúng tôi nói rằng họ tin tưởng chúng tôi và mua sản phẩm của chúng tôi mà không hề do dự vì họ tin tưởng chúng tôi và luôn vui vẻ khi mua sản phẩm của chúng tôi.</p>
+                                    <p>Chúng tôi cung cấp những điều tốt nhất mà họ đã tin tưởng chúng tôi và mua sản phẩm của chúng tôi mà không hề có bất kỳ sự đắn đo nào vì họ tin tưởng chúng tôi và luôn vui vẻ mua hàng.</p>
                                 </div>
                             </div>
                             {/* About Text End */}

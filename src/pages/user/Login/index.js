@@ -40,7 +40,7 @@ const Login = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Đăng nhập</li>
                         </ul>
                     </div>
@@ -55,14 +55,14 @@ const Login = () => {
                             <form action="#">
                                 {message}
                                 <div className="login-form">
-                                    <h4 className="login-title">Login</h4>
+                                    <h4 className="login-title">Đăng nhập</h4>
                                     <div className="row">
                                         <div className="col-md-12 col-12 mb-20">
                                             <label>Email Address*</label>
                                             <input className="mb-0" onChange={onChangeInput} name="email" type="text" placeholder="Email Address" required />
                                         </div>
                                         <div className="col-12 mb-20">
-                                            <label>Password</label>
+                                            <label>Mật khẩu</label>
                                             <input className="mb-0" onChange={onChangeInput} name="password" type="password" placeholder="Password" required />
                                         </div>
                                         <div className="col-md-8">
@@ -76,7 +76,7 @@ const Login = () => {
                                             <Link to="/register"> Đăng kí ngay!</Link>
                                         </div>
                                         <div className="col-md-12">
-                                            <button onClick={onClickLogin} className="register-button mt-0">Login</button>
+                                            <button onClick={onClickLogin} className="register-button mt-0">Đăng nhập</button>
                                         </div>
                                     </div>
                                 </div>

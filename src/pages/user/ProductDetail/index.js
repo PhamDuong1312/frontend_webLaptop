@@ -101,7 +101,7 @@ const ProductDetail = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Chi tiết sản phẩm</li>
                         </ul>
                     </div>
@@ -130,7 +130,7 @@ const ProductDetail = () => {
                             <div className="product-details-view-content pt-60">
                                 <div className="product-info">
                                     <h2>{product?.name}</h2>
-                                    <span className="product-details-ref">{product?.categoryId?.name}</span>
+                                    <p>Hãng sản xuất : <b className="product-details-ref">{product?.categoryId?.name}</b></p>
                                     {/* <div className="rating-box pt-20">
                                         <ul className="rating rating-with-review-item">
                                             <li><i className="fa fa-star-o" /></li>
@@ -142,6 +142,7 @@ const ProductDetail = () => {
                                             <li className="review-item"><a href="#">Write Review</a></li>
                                         </ul>
                                     </div> */}
+
                                     {product.giamGia ?
                                         <div className="price-box pt-20">
                                             <span className="new-price new-price-2">{VND.format(product?.price - (product?.price * product.giamGia) / 100)}</span>
@@ -152,14 +153,30 @@ const ProductDetail = () => {
                                             <span className="new-price new-price-2">{VND.format(product?.price)}</span>
                                         </div>
                                     }
+                                    <div className="rating-box">
+                                        <div>
+                                            <b>Ưu đãi</b>
+                                        </div>
+                                        <p style={{marginBottom:0}}>Phụ kiện : <span>{product.phuKien}</span></p>
+                                        <p >
+                                            Bảo hành : <span>{product.baoHanh}</span></p>
+
+                                    </div>
                                     <div className="product-desc">
+                                    <div>
+                                            <b>Mô tả sản phẩm</b>
+                                        </div>
                                         <p>
                                             <span>
                                                 {product?.description}
                                             </span>
                                         </p>
                                     </div>
-
+                                    <div className="rating-box pt-20">
+                                        {product.status ?
+                                            <span className="btn btn-success">Còn hàng</span> :
+                                            <span className="btn btn-danger">Hết hàng</span>}
+                                    </div>
                                     <div className="single-add-to-cart">
                                         <form action="#" className="cart-quantity">
                                             <div className="quantity">
@@ -174,7 +191,7 @@ const ProductDetail = () => {
                                         </form>
                                     </div>
                                     <div className="product-additional-info pt-25">
-                                        <a className="wishlist-btn" href="wishlist.html"><i className="fa fa-heart-o" />Add to wishlist</a>
+                                        <a className="wishlist-btn" href="#"><i className="fa fa-heart-o" />Thêm vào danh sách yêu thích</a>
                                         <div className="product-social-sharing pt-25">
                                             <ul>
                                                 <li className="facebook"><a href="#"><i className="fa fa-facebook" />Facebook</a></li>
@@ -191,7 +208,7 @@ const ProductDetail = () => {
                                                     <div className="reassurance-icon">
                                                         <i className="fa fa-check-square-o" />
                                                     </div>
-                                                    <p>Security policy (edit with Customer reassurance module)</p>
+                                                    <p>Chính sách bảo mật (sửa với module Đảm bảo với khách hàng)</p>
                                                 </div>
                                             </li>
                                             <li>
@@ -199,7 +216,7 @@ const ProductDetail = () => {
                                                     <div className="reassurance-icon">
                                                         <i className="fa fa-truck" />
                                                     </div>
-                                                    <p>Delivery policy (edit with Customer reassurance module)</p>
+                                                    <p>Chính sách giao hàng (sửa với module Đảm bảo với khách hàng)</p>
                                                 </div>
                                             </li>
                                             <li>
@@ -207,7 +224,7 @@ const ProductDetail = () => {
                                                     <div className="reassurance-icon">
                                                         <i className="fa fa-exchange" />
                                                     </div>
-                                                    <p> Return policy (edit with Customer reassurance module)</p>
+                                                    <p> Chính sách hoàn trả (sửa với module Đảm bảo với khách hàng)</p>
                                                 </div>
                                             </li>
                                         </ul>

@@ -31,7 +31,7 @@ const HeaderAdmin=()=>{
                                 <span className="icon-bar" />
                                 <span className="icon-bar" />
                             </button>
-                            <Link className="navbar-brand" to="/"><span>PhamDuong</span>Shop</Link>
+                            <Link className="navbar-brand" to="/"><span>LIMUPA</span>Shop</Link>
                             <ul className="user-menu">
                                 <li className="dropdown pull-right">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown"><svg className="glyph stroked male-user"><use xlinkHref="#stroked-male-user" /></svg> {user.fullName} <span className="caret" /></a>

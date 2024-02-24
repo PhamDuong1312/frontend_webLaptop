@@ -2,6 +2,8 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { getProductHot } from "../../../services/Api"
 import ProductItem from "../ProductItem"
+import Aos from "aos"
+import "aos/dist/aos.css"
 
 const ProductHot = () => {
     const [productHot,setProductHot]=React.useState([])
@@ -13,11 +15,13 @@ const ProductHot = () => {
         }).then(({data})=>{
             setProductHot(data.data)
         })
+        Aos.init()
+        Aos.refresh()
     },[])
 
     return (
         <>
-            <div className="content-wraper pt-60 pb-60">
+            <div data-aos="fade-up" className="content-wraper pt-60 pb-60">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">

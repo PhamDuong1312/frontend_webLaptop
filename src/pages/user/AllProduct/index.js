@@ -44,7 +44,7 @@ const AllProduct = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Sản phẩm </li>
                         </ul>
                     </div>
@@ -57,7 +57,7 @@ const AllProduct = () => {
                         <div className="col-lg-12">
                             <div className="single-banner shop-page-banner">
                                 <a href="#">
-                                    <img src="./Asset/User/images/bg-banner/2.jpg" alt="Li's Static Banner" />
+                                    <img src="./Asset/User/images/banner/638378857537132015_F-C1_1200x300.jpg" alt="Li's Static Banner" />
                                 </a>
                             </div>
 

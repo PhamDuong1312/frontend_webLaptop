@@ -1,8 +1,14 @@
-
+import React from "react"
+import Aos from "aos"
+import "aos/dist/aos.css"
 
 const Footer = () => {
+    React.useEffect(()=>{
+        Aos.init()
+        Aos.refresh()
+    },[])
     return (<>
-        <div className="footer">
+        <div data-aos="fade-up" className="footer">
             {/* Begin Footer Static Top Area */}
             <div className="footer-static-top">
                 <div className="container">
@@ -16,8 +22,8 @@ const Footer = () => {
                                         <img src="./Asset/User/images/shipping-icon/1.png" alt="Shipping Icon" />
                                     </div>
                                     <div className="shipping-text">
-                                        <h2>Free Delivery</h2>
-                                        <p>And free returns. See checkout for delivery dates.</p>
+                                        <h2>Giao hàng miễn phí</h2>
+                                        <p>Và trả lại miễn phí. Xem thanh toán để biết ngày giao hàng.</p>
                                     </div>
                                 </div>
                             </div>
@@ -29,8 +35,9 @@ const Footer = () => {
                                         <img src="./Asset/User/images/shipping-icon/2.png" alt="Shipping Icon" />
                                     </div>
                                     <div className="shipping-text">
-                                        <h2>Safe Payment</h2>
-                                        <p>Pay with the world's most popular and secure payment methods.</p>
+                                        <h2>Thanh toán an toàn</h2>
+                                        <p>
+                                            Thanh toán bằng các phương thức thanh toán phổ biến và an toàn nhất thế giới.</p>
                                     </div>
                                 </div>
                             </div>
@@ -42,8 +49,9 @@ const Footer = () => {
                                         <img src="./Asset/User/images/shipping-icon/3.png" alt="Shipping Icon" />
                                     </div>
                                     <div className="shipping-text">
-                                        <h2>Shop with Confidence</h2>
-                                        <p>Our Buyer Protection covers your purchasefrom click to delivery.</p>
+                                        <h2>Tự tin mua sắm</h2>
+                                        <p>
+                                            Bảo vệ người mua của chúng tôi bao gồm việc mua hàng của bạn từ nhấp chuột đến giao hàng.</p>
                                     </div>
                                 </div>
                             </div>
@@ -55,8 +63,9 @@ const Footer = () => {
                                         <img src="./Asset/User/images/shipping-icon/4.png" alt="Shipping Icon" />
                                     </div>
                                     <div className="shipping-text">
-                                        <h2>24/7 Help Center</h2>
-                                        <p>Have a question? Call a Specialist or chat online.</p>
+                                        <h2>Trung tâm trợ giúp 24/7</h2>
+                                        <p>
+                                            Bạn có câu hỏi? Gọi cho Chuyên gia hoặc trò chuyện trực tuyến.</p>
                                     </div>
                                 </div>
                             </div>
@@ -82,16 +91,16 @@ const Footer = () => {
                                 </div>
                                 <ul className="des">
                                     <li>
-                                        <span>Address: </span>
-                                        6688Princess Road, London, Greater London BAS 23JK, UK
+                                        <span>Địa chỉ: </span>
+                                        16 Đường Xuân Phương, Minh Khai, Bắc Từ Liêm, Hà Nội
                                     </li>
                                     <li>
-                                        <span>Phone: </span>
-                                        <a href="#">(+123) 123 321 345</a>
+                                        <span>Điện thoại: </span>
+                                        <a href="#">(+84) 963 523 033</a>
                                     </li>
                                     <li>
                                         <span>Email: </span>
-                                        <a href="mailto://info@yourdomain.com">info@yourdomain.com</a>
+                                        <a href="mailto://phamquyduong2k2@gmail.com">phamquyduong2k2@gmail.com</a>
                                     </li>
                                 </ul>
                             </div>
@@ -99,12 +108,12 @@ const Footer = () => {
                             {/* Begin Footer Block Area */}
                             <div className="col-lg-2 col-md-3 col-sm-6">
                                 <div className="footer-block">
-                                    <h3 className="footer-block-title">Product</h3>
+                                    <h3 className="footer-block-title">Sản phẩm</h3>
                                     <ul>
-                                        <li><a href="#">Prices drop</a></li>
-                                        <li><a href="#">New products</a></li>
-                                        <li><a href="#">Best sales</a></li>
-                                        <li><a href="#">Contact us</a></li>
+                                        <li><a href="#">Giảm giá</a></li>
+                                        <li><a href="#">Sản phẩm mới</a></li>
+                                        <li><a href="#">Sản phẩm nổi bật</a></li>
+                                        <li><a href="#">Liên hệ với chúng tôi</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -112,7 +121,7 @@ const Footer = () => {
                             {/* Begin Footer Block Area */}
                             <div className="col-lg-2 col-md-3 col-sm-6">
                                 <div className="footer-block">
-                                    <h3 className="footer-block-title">Our company</h3>
+                                    <h3 className="footer-block-title">Cửa hàng của chúng tôi</h3>
                                     <ul>
                                         <li><a href="#">Delivery</a></li>
                                         <li><a href="#">Legal Notice</a></li>
@@ -125,7 +134,7 @@ const Footer = () => {
                             {/* Begin Footer Block Area */}
                             <div className="col-lg-4">
                                 <div className="footer-block">
-                                    <h3 className="footer-block-title">Follow Us</h3>
+                                    <h3 className="footer-block-title">Theo dõi chúng tôi</h3>
                                     <ul className="social-link">
                                         <li className="twitter">
                                             <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title data-original-title="Twitter">

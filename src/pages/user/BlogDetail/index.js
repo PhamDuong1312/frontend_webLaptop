@@ -93,7 +93,7 @@ const BlogDetail = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Chi tiết bài viết</li>
                         </ul>
                     </div>
@@ -126,8 +126,8 @@ const BlogDetail = () => {
                                                         </Link>
                                                     </div>
                                                     <div className="li-recent-post-des">
-                                                        <span><Link to={`/blog/${item._id}`}>{item.title}</Link></span>
-                                                        <span className="li-post-date">{moment(item.createdAt).format("DD-MM-YYYY")}</span>
+                                                        <span style={{padding:0}}><Link to={`/blog/${item._id}`}>{item.title}</Link></span>
+                                                        <span style={{padding:0}} className="li-post-date">{moment(item.createdAt).format("DD-MM-YYYY")}</span>
 
                                                     </div>
                                                 </div>
@@ -165,7 +165,7 @@ const BlogDetail = () => {
                                                 <h3 className="li-blog-heading pt-25"><a href="#">{blog.title}</a></h3>
                                                 <div className="li-blog-meta">
                                                     <a className="author" href="#"><i className="fa fa-user" />Admin</a>
-                                                    <a className="comment" href="#"><i className="fa fa-comment-o" /> 3 comment</a>
+                                                    <a className="comment" href="#"><i className="fa fa-comment-o" /> {total} comment</a>
                                                     <a className="post-time" href="#"><i className="fa fa-calendar" />{moment(blog.createdAt).format("DD/MM/YYYY")}</a>
                                                 </div>
                                                 <p>{blog.header}</p>

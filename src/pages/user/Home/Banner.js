@@ -1,9 +1,14 @@
-
-
+import React from "react"
+import Aos from "aos"
+import "aos/dist/aos.css"
 const Banner = () => {
+    React.useEffect(()=>{
+        Aos.init()
+        Aos.refresh()
+    },[])
     return (
         <>
-            <div className="li-static-banner">
+            <div data-aos="fade-up" className="li-static-banner">
                 <div className="container">
                     <div className="row">
                         {/* Begin Single Banner Area */}

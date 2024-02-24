@@ -55,7 +55,7 @@ const Register = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Đăng kí</li>
                         </ul>
                     </div>
@@ -69,10 +69,10 @@ const Register = () => {
                             {message}
                             <form action="#">
                                 <div className="login-form">
-                                    <h4 className="login-title">Register</h4>
+                                    <h4 className="login-title">Đăng kí</h4>
                                     <div className="row">
                                         <div className="col-md-12 mb-20">
-                                            <label for="fullName">Full Name</label>
+                                            <label for="fullName">Tên đầy đủ</label>
                                             <input required onChange={onChangeInput} id="fullName" className="mb-0" type="text" name="fullName" placeholder="Full Name" />
                                         </div>
                                         <div className="col-md-12 mb-20">
@@ -80,18 +80,18 @@ const Register = () => {
                                             <input required onChange={onChangeInput} id="email" className="mb-0" type="email" name="email" placeholder="Email Address" />
                                         </div>
                                         <div className="col-md-6 mb-20">
-                                            <label for="password">Password</label>
+                                            <label for="password">Mật khẩu</label>
                                             <input required onChange={onChangeInput} id="password" className="mb-0" type="password" name="password" placeholder="Password" />
                                         </div>
                                         <div className="col-md-6 mb-20">
-                                            <label for="rePassword">Confirm Password</label>
+                                            <label for="rePassword">Nhập lại mật khẩu</label>
                                             <input required onChange={onChangeInput} id="rePassword" className="mb-0" type="password" name="rePassword" placeholder="Confirm Password" />
                                         </div>
                                         <div className="col-md-8 mt-10 mb-20">
                                             <Link to="/login"> Bạn đã có tài khoản!</Link>
                                         </div>
                                         <div className="col-12">
-                                            <button onClick={submitCreateUser} className="register-button mt-0">Register</button>
+                                            <button onClick={submitCreateUser} className="register-button mt-0">Đăng kí</button>
                                         </div>
                                     </div>
                                 </div>

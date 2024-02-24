@@ -145,7 +145,7 @@ const EditProduct = () => {
                                         <input type="file" name="image" required onChange={onChangeFile} />
                                         <br />
                                         <div>
-                                            <img id="loadImg" src={getImageProduct(product.image)} />
+                                            <img style={{width: "400px"}} id="loadImg" src={getImageProduct(product.image)} />
                                         </div>
                                     </div>
                                     <div className="form-group">

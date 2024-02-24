@@ -7,7 +7,7 @@ const Error = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Page Error</li>
                         </ul>
                     </div>
@@ -31,7 +31,7 @@ const Error = () => {
                                     </form>
                                 </div>
                                 <div className="error-button">
-                                    <Link to="/">Back to home page</Link>
+                                    <Link to="/">Quay lại trang chủ</Link>
                                 </div>
                             </div>
                         </div>

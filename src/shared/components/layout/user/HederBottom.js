@@ -25,7 +25,7 @@ const HeaderBottom = () => {
                                 <nav style={{ display: 'block' }}>
                                     <ul>
 
-                                        <li ><Link to="/">Trang chủ</Link>
+                                        <li ><a href="/">Trang chủ</a>
                                         </li>
                                         <li ><Link to="/products">Sản Phẩm</Link>
                                         </li>

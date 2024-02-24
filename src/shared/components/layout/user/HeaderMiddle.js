@@ -59,9 +59,9 @@ const HeaderMiddle = () => {
                         {/* Begin Header Logo Area */}
                         <div className="col-lg-3">
                             <div className="logo pb-sm-30 pb-xs-30">
-                                <Link to="/">
+                                <a href="/">
                                     <img src="./Asset/User/images/menu/logo/1.jpg" alt />
-                                </Link>
+                                </a>
                             </div>
                         </div>
                         {/* Header Logo Area End Here */}

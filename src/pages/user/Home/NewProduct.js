@@ -3,6 +3,8 @@ import { getAllProducts } from "../../../services/Api"
 import ProductItem from "../ProductItem"
 import Panigation from "../Panigation"
 import { useSearchParams } from "react-router-dom"
+import Aos from "aos"
+import "aos/dist/aos.css"
 const NewProduct = () => {
 
     const [products,setProduct]=React.useState([])
@@ -23,10 +25,13 @@ const NewProduct = () => {
             setPages(data.pages)
             seTotal(data.total)
         })
+        Aos.init()
+        Aos.refresh()
+        
     },[page])
     return (
         <>
-            <div className="content-wraper pt-60 pb-60">
+            <div data-aos="fade-up" className="content-wraper pt-60 pb-60">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">

@@ -61,7 +61,7 @@ const Blog = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Bài viết</li>
                         </ul>
                     </div>
@@ -94,8 +94,8 @@ const Blog = () => {
                                                         </Link>
                                                     </div>
                                                     <div className="li-recent-post-des">
-                                                        <span><Link to={`/blog/${item._id}`}>{item.title}</Link></span>
-                                                        <span className="li-post-date">{moment(item.createdAt).format("DD-MM-YYYY")}</span>
+                                                        <span style={{padding:0}}><Link to={`/blog/${item._id}`}>{item.title}</Link></span>
+                                                        <span style={{padding:0}} className="li-post-date">{moment(item.createdAt).format("DD-MM-YYYY")}</span>
 
                                                     </div>
                                                 </div>

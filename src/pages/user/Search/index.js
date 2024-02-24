@@ -33,7 +33,7 @@ const Search = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Tìm kiếm </li>
                         </ul>
                     </div>

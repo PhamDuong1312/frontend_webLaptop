@@ -102,7 +102,7 @@ const ForgotPassword = () => {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
-                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/">Trang chủ</Link></li>
                             <li className="active">Quên mật khẩu</li>
                         </ul>
                     </div>
@@ -123,11 +123,11 @@ const ForgotPassword = () => {
                                             <input required id="email" onChange={onChangeInput} className="mb-0" type="email" name="email" placeholder="Email Address" />
                                         </div>
                                         <div className="col-md-6 mb-20">
-                                            <label for="password">Password</label>
+                                            <label for="password">Mật khẩu mới</label>
                                             <input required id="password" onChange={onChangeInput} className="mb-0" type="password" name="password" placeholder="Password" />
                                         </div>
                                         <div className="col-md-6 mb-20">
-                                            <label for="rePassword">Confirm Password</label>
+                                            <label for="rePassword">Nhập lại mật khẩu</label>
                                             <input required id="rePassword" onChange={onChangeInput} className="mb-0" type="password" name="rePassword" placeholder="Confirm Password" />
                                         </div>
                                         <div className="col-md-8 mb-20">
