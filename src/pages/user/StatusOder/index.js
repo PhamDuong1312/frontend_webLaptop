@@ -6,8 +6,8 @@ const StatusOder = () => {
     const user = useSelector(({ Auth }) => Auth.user)
 
     const navigate=useNavigate()
-    const [searchParams] = useSearchParams();
     const [message,setMessage] = React.useState(<h3>Loading ... !</h3>)
+    const [searchParams] = useSearchParams();
     const info = JSON.parse(searchParams.get("vnp_OrderInfo"))
     React.useEffect( ()=>{
         if (searchParams.get("vnp_ResponseCode")) {
@@ -21,7 +21,10 @@ const StatusOder = () => {
                         ...info,user:user._id,pay:"vnpay"
                     },{}).then(()=>{
                         navigate("/status")
+                    }).catch(()=>{
+                        navigate("/status?vnp_ResponseCode==11")
                     })
+                    
                 })
                 
             } else {

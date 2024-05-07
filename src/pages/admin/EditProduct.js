@@ -2,12 +2,15 @@ import React from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { editProduct, getAllCategories, getProduct } from "../../services/Api";
 import { checkFileImage, getImageProduct } from "../../ultils";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const EditProduct = () => {
 
     const { id } = useParams();
     const navigate = useNavigate();
     const [categories, setCategory] = React.useState([])
+    const [description, setDescription] = React.useState("")
 
     const [message, setMessage] = React.useState("")
     const [product, setProduct] = React.useState({})
@@ -18,7 +21,8 @@ const EditProduct = () => {
         getProduct(id, {}).then(({ data }) => {
             setProduct(data.data)
             setImage(data.data.image)
-            setInputs({
+            setInputs({...inputs,
+                quantity: data.data.quantity,
                 name: data.data.name,
                 price: data.data.price,
                 phuKien: data.data.phuKien,
@@ -27,10 +31,10 @@ const EditProduct = () => {
                 categoryId: data.data.categoryId._id,
                 giamGia: data.data.giamGia,
                 status: data.data.status,
-                description: data.data.description,
                 baoHanh: data.data.baoHanh
 
             })
+            setDescription(data.data.description)
         })
         getAllCategories({
             params: {
@@ -42,12 +46,14 @@ const EditProduct = () => {
     }, [id])
 
     const handleUpdateProduct = () => {
-        if (inputs.name && inputs.price && image && inputs.baoHanh && inputs.description && inputs.phuKien && inputs.tinhTrang) {
+        if (inputs.name && inputs.price&&inputs.quantity && image && inputs.baoHanh && description && inputs.phuKien && inputs.tinhTrang) {
             const formData = new FormData();
             for (const key in inputs) {
                 formData.append(key, inputs[key])
             }
             formData.append("image", image)
+            formData.append("description", description)
+
 
             editProduct(id, formData, {})
                 .then(() => {
@@ -91,6 +97,11 @@ const EditProduct = () => {
 
         }
 
+    }
+    const changeCKE=(e,editor)=>{
+        setMessage("")
+        const description = editor.getData()
+        setDescription(description)
     }
     return (
         <>
@@ -162,11 +173,8 @@ const EditProduct = () => {
                                         </select>
                                     </div>
                                     <div className="form-group">
-                                        <label>Trạng thái</label>
-                                        <select name="status" onChange={onChangInput} className="form-control">
-                                            <option value={1}>Còn hàng</option>
-                                            <option selected={!inputs.status} value={0}>Hết hàng</option>
-                                        </select>
+                                        <label>Số lượng</label>
+                                        <input type="number" min="0" max="100" name="quantity" required onChange={onChangInput} value={inputs.quantity || ""} defaultValue="Xạc dự phòng" className="form-control" />
                                     </div>
                                     <div className="form-group">
                                         <label>Sản phẩm nổi bật</label>
@@ -178,7 +186,11 @@ const EditProduct = () => {
                                     </div>
                                     <div className="form-group">
                                         <label>Mô tả sản phẩm</label>
-                                        <textarea name="description" required onChange={onChangInput} value={inputs.description || ""} className="form-control" rows={3} defaultValue={""} />
+                                        <CKEditor
+                                            editor={ClassicEditor}
+                                            data={description||""}
+                                            onChange={changeCKE}
+                                        />
                                     </div>
                                     <button type="submit" onClick={handleUpdateProduct} name="sbm" className="btn btn-primary">Cập nhật</button>
                                     <button type="reset" onClick={() => setInputs({})} className="btn btn-default">Làm mới</button>

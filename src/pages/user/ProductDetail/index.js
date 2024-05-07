@@ -6,6 +6,7 @@ import ProductItem from "../ProductItem"
 import { useSelector } from "react-redux"
 import moment from "moment"
 import Panigation from "../PanigationCmt"
+import HTMLReactParser from "html-react-parser"
 
 const ProductDetail = () => {
     const [searchParams] = useSearchParams();
@@ -51,7 +52,11 @@ const ProductDetail = () => {
             inputQuantity.value = Number(inputQuantity.value) - 1;
     }
     const upInputQty = () => {
-        inputQuantity.value = Number(inputQuantity.value) + 1;
+        if (Number(inputQuantity.value) < product.quantity){
+            inputQuantity.value = Number(inputQuantity.value) + 1;
+        }else{
+            
+        }
     }
     const handleAddToCart = (e) => {
         e.preventDefault()
@@ -157,18 +162,18 @@ const ProductDetail = () => {
                                         <div>
                                             <b>Ưu đãi</b>
                                         </div>
-                                        <p style={{marginBottom:0}}>Phụ kiện : <span>{product.phuKien}</span></p>
+                                        <p style={{ marginBottom: 0 }}>Phụ kiện : <span>{product.phuKien}</span></p>
                                         <p >
                                             Bảo hành : <span>{product.baoHanh}</span></p>
 
                                     </div>
                                     <div className="product-desc">
-                                    <div>
+                                        <div>
                                             <b>Mô tả sản phẩm</b>
                                         </div>
                                         <p>
                                             <span>
-                                                {product?.description}
+                                                {product.description&&HTMLReactParser(product?.description)}
                                             </span>
                                         </p>
                                     </div>

@@ -5,6 +5,8 @@ import { getImageBlog } from "../../../ultils"
 import moment from "moment"
 import { useSelector } from "react-redux"
 import Panigation from "../PanigationCmt"
+import HTMLReactParser from "html-react-parser"
+
 const BlogDetail = () => {
     const [searchParams] = useSearchParams();
 
@@ -172,12 +174,12 @@ const BlogDetail = () => {
                                                 {/* Begin Blog Blockquote Area */}
                                                 <div className="li-blog-blockquote">
                                                     <blockquote>
-                                                        <p>{blog.notes}
+                                                        <p>{blog.notes&&HTMLReactParser(blog.notes)}
                                                         </p>
                                                     </blockquote>
                                                 </div>
                                                 {/* Blog Blockquote Area End Here */}
-                                                <p>{blog.content}
+                                                <p>{blog.content&&HTMLReactParser(blog.content)}
                                                 </p>
                                                 <div className="li-tag-line">
                                                     <h4>tag:</h4>

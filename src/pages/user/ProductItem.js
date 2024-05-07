@@ -38,19 +38,11 @@ const ProductItem = ({ item }) => {
                 </div>
                 <div className="product_desc">
                     <div className="product_desc_info">
-                        <div className="product-review">
+                        <div style={{textAlign:"right"}} className="product-review">
                             <h5 className="manufacturer">
-                                <Link to={`/product/${item._id}`}>Graphic Corner</Link>
+                                <Link to={`/product/${item._id}`}>Đã bán {item.daBan}</Link>
                             </h5>
-                            <div className="rating-box">
-                                <ul className="rating">
-                                    <li><i className="fa fa-star-o" /></li>
-                                    <li><i className="fa fa-star-o" /></li>
-                                    <li><i className="fa fa-star-o" /></li>
-                                    <li className="no-star"><i className="fa fa-star-o" /></li>
-                                    <li className="no-star"><i className="fa fa-star-o" /></li>
-                                </ul>
-                            </div>
+                            
                         </div>
                         <h4><Link className="product_name" to={`/product/${item._id}`}>{item.name}</Link></h4>
                         {item.giamGia ?

@@ -2,11 +2,16 @@ import React from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { checkFileImage, getImageBlog } from "../../ultils";
 import { editBlog, getBlogDetail } from "../../services/Api";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic"
 
 const EditBlog = () => {
 
     const { id } = useParams();
     const navigate = useNavigate();
+    const [notes,setNotes]=React.useState("")
+    const [content,setContent]=React.useState("")
+
     const [message, setMessage] = React.useState("")
     const [blog, setBlog] = React.useState({})
     const [inputs, setInputs] = React.useState({})
@@ -20,19 +25,23 @@ const EditBlog = () => {
                 title: data.data.title,
                 header: data.data.header,
                 tags: data.data.tags,
-                notes: data.data.notes,
-                content: data.data.content,
+                
+                
             })
+            setContent(data.data.content)
+            setNotes(data.data.notes)
         })
     }, [id])
 
     const handleUpdateBlog = () => {
-        if (inputs.title && inputs.header && image && inputs.notes && inputs.tags && inputs.content) {
+        if (inputs.title && inputs.header && image && notes && inputs.tags && content) {
             const formData = new FormData();
             for (const key in inputs) {
                 formData.append(key, inputs[key])
             }
             formData.append("image", image)
+            formData.append("notes", notes)
+            formData.append("content", content)
 
             editBlog(id, formData, {})
                 .then(() => {
@@ -114,11 +123,29 @@ const EditBlog = () => {
                                     </div>
                                     <div className="form-group">
                                         <label>Mô tả bài viết</label>
-                                        <textarea onChange={onChangInput} required value={inputs.notes || ""} name="notes" className="form-control" rows={3} defaultValue={""} />
+                                        <CKEditor
+                                            editor={ClassicEditor}
+                                            data={notes || ""}
+                                            onReady={editor => {
+                                                // You can store the "editor" and use when it is needed.
+                                            }}
+                                            onChange={(event, editor) => {
+                                                setMessage("")
+                                                setNotes(editor.getData())
+                                            }}/>
                                     </div>
                                     <div className="form-group">
                                         <label>Nội dung bài viết</label>
-                                        <textarea onChange={onChangInput} required value={inputs.content || ""} name="content" className="form-control" rows={3} defaultValue={""} />
+                                        <CKEditor
+                                            editor={ClassicEditor}
+                                            data={content || ""}
+                                            onReady={editor => {
+                                                // You can store the "editor" and use when it is needed.
+                                            }}
+                                            onChange={(event, editor) => {
+                                                setMessage("")
+                                                setContent(editor.getData())
+                                            }}/>
                                     </div>
                                     <button name="sbm" onClick={handleUpdateBlog} type="submit" className="btn btn-success">Cập nhật</button>
                                     <button type="reset" onClick={() => setInputs({})} className="btn btn-default">Làm mới</button>

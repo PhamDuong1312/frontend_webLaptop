@@ -4,6 +4,7 @@ export const apiLogin = (data)=>Http.post('/login',data);
 export const apiGetCode = (data)=>Http.post('/getcode',data);
 export const apiChangePassword = (data)=>Http.put('/changepassword',data);
 export const apiChangePasswordNext = (data)=>Http.put('/changepasswordnext',data);
+export const apiLoginGoogle = (config)=>Http.get('/auth/google',config);
 
 
 

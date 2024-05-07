@@ -1,13 +1,14 @@
-import { Link,useNavigate } from "react-router-dom"
+import { Link, useNavigate, useSearchParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import React from "react"
 import { LOGIN_SUCCESS } from "../../../shared/constants/action-type"
-import { apiLogin } from "../../../services/Api"
+import { apiLogin, apiLoginGoogle, getUser } from "../../../services/Api"
 
 const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get("id")
     const [message, setMessage] = React.useState("")
 
     const [inputs, setInputs] = React.useState({})
@@ -34,6 +35,33 @@ const Login = () => {
                 })
         }
     }
+
+    const loginByFacebook = (e) => {
+        e.preventDefault()
+        window.location.href = "http://localhost:8000/api/auth/facebook"
+    }
+    const loginByGoogle = (e) => {
+        e.preventDefault()
+        window.location.href = "http://localhost:8000/api/auth/google"
+    }
+    React.useEffect(() => {
+        if (id) {
+            getUser(id).then(({ data }) => {
+                apiLogin({email:data.data.email,password:data.data.password})
+                    .then(({ data }) => {
+                        if (data.user) {
+                            dispatch({
+                                type: LOGIN_SUCCESS,
+                                payload: data.user
+                            })
+                            navigate('/')
+                        } else {
+                            setMessage(<div className="alert alert-danger">Tài khoản hoặc mật khẩu không chính xác !</div>)
+                        }
+                    })
+            })
+        }
+    }, [])
     return (
         <>
             <div style={{ marginTop: "-20px" }} className="breadcrumb-area">
@@ -50,7 +78,7 @@ const Login = () => {
             <div className="page-section mb-60 mt-40">
                 <div className="container">
                     <div className="row">
-                        <div style={{margin:"auto"}} className="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                        <div style={{ margin: "auto" }} className="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
                             {/* Login Form s*/}
                             <form action="#">
                                 {message}
@@ -78,11 +106,27 @@ const Login = () => {
                                         <div className="col-md-12">
                                             <button onClick={onClickLogin} className="register-button mt-0">Đăng nhập</button>
                                         </div>
+                                        <div className="footer-block col-12" style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <ul className="social-link">
+
+                                                <li className="google-plus">
+                                                    <a onClick={(e) => loginByGoogle(e)} href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title data-original-title="Google Plus">
+                                                        <i className="fa fa-google-plus" />
+                                                    </a>
+                                                </li>
+                                                <li className="facebook">
+                                                    <a onClick={(e) => loginByFacebook(e)} href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title data-original-title="Facebook">
+                                                        <i className="fa fa-facebook" />
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

@@ -1,14 +1,12 @@
 import React from "react"
-import Aos from "aos"
-import "aos/dist/aos.css"
+
 
 const Footer = () => {
     React.useEffect(()=>{
-        Aos.init()
-        Aos.refresh()
+       
     },[])
     return (<>
-        <div data-aos="fade-up" className="footer">
+        <div  className="footer">
             {/* Begin Footer Static Top Area */}
             <div className="footer-static-top">
                 <div className="container">

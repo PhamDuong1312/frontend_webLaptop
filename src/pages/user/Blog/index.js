@@ -4,6 +4,8 @@ import { getBlogs } from "../../../services/Api";
 import Panigation from "../PanigationCmt";
 import { getImageBlog } from "../../../ultils";
 import moment from "moment";
+import HTMLReactParser from "html-react-parser"
+
 const Blog = () => {
     const navigate = useNavigate()
     const [blogs, setBlogs] = React.useState([])
@@ -143,7 +145,7 @@ const Blog = () => {
                                                                     {/* <a className="comment" href="#"><i className="fa fa-comment-o" /> 3 comment</a> */}
                                                                     <a className="post-time" href="#"><i className="fa fa-calendar" />{moment(item.createdAt).format("DD/MM/YYYY")}</a>
                                                                 </div>
-                                                                <p className="baiviettat">{item.notes}</p>
+                                                                <p className="baiviettat">{HTMLReactParser(item.notes)}</p>
                                                                 <Link className="read-more" to={`/blog/${item._id}`}>Đọc tiếp...</Link>
                                                             </div>
                                                         </div>

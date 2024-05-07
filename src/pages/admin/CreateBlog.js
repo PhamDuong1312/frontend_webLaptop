@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom"
 import React from "react"
 import { checkFileImage } from "../../ultils"
 import { createBlog } from "../../services/Api"
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic"
 
 const CreateBlog = () => {
     const navigate = useNavigate()
@@ -89,7 +91,7 @@ const CreateBlog = () => {
                                     </form></div>
                                 <div className="col-md-8">
                                     <div className="form-group">
-                                        <label>Ảnh sản phẩm</label>
+                                        <label>Ảnh bài viết</label>
                                         <input required onChange={onChangeFile} name="image" type="file" />
                                         <br />
                                         <div>
@@ -98,11 +100,31 @@ const CreateBlog = () => {
                                     </div>
                                     <div className="form-group">
                                         <label>Mô tả bài viết</label>
-                                        <textarea onChange={onChangeInputs} required value={inputs.notes || ""} name="notes" className="form-control" rows={3} defaultValue={""} />
+                                        <CKEditor
+                                            editor={ClassicEditor}
+                                            data={inputs.notes || ""}
+                                            onReady={editor => {
+                                                // You can store the "editor" and use when it is needed.
+                                            }}
+                                            onChange={(event, editor) => {
+                                                setMessage("")
+                                                setInputs({ ...inputs, notes: editor.getData() })
+                                            }}
+                                        />
                                     </div>
                                     <div className="form-group">
                                         <label>Nội dung bài viết</label>
-                                        <textarea onChange={onChangeInputs} required value={inputs.content || ""} name="content" className="form-control" rows={3} defaultValue={""} />
+                                        <CKEditor
+                                            editor={ClassicEditor}
+                                            data={inputs.content || ""}
+                                            onReady={editor => {
+                                                // You can store the "editor" and use when it is needed.
+                                            }}
+                                            onChange={(event, editor) => {
+                                                setMessage("")
+                                                setInputs({ ...inputs, content: editor.getData() })
+                                            }}
+                                        />
                                     </div>
                                     <button name="sbm" onClick={handleCreateBlog} type="submit" className="btn btn-success">Thêm mới</button>
                                     <button type="reset" onClick={() => setInputs({})} className="btn btn-default">Làm mới</button>

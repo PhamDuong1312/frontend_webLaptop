@@ -52,7 +52,7 @@ const User = () => {
             setShow(true)
         }, 400)
         setTimeout(() => {
-            document.getElementById("script").appendChild(script,script2)
+            document.getElementById("script")?.appendChild(script,script2)
         }, 500)
         Aos.init()
         Aos.refresh()

@@ -40,14 +40,16 @@ const Cart = () => {
             }
         }
     }
-    const upQty = (pid, id) => {
+    const upQty = (pid, id,quantity) => {
         const inputQty = document.getElementById(id)
-        inputQty.value = Number(inputQty.value) + 1
-        update({
-            user: user._id,
-            product: pid,
-            quantity: Number(inputQty.value)
-        });
+        if(Number(inputQty.value)<quantity){
+            inputQty.value = Number(inputQty.value) + 1
+            update({
+                user: user._id,
+                product: pid,
+                quantity: Number(inputQty.value)
+            });
+        }
     }
     const handleDeleteToCart = (e, id) => {
         e.preventDefault();
@@ -90,7 +92,7 @@ const Cart = () => {
         }
 
     }
-    const handleClickParent=(e)=>{
+    const handleClickParent = (e) => {
         e.stopPropagation()
         e.target.parentElement.click()
     }
@@ -101,7 +103,7 @@ const Cart = () => {
             if (checkPhone(inputs.phone.trim())) {
                 if (checkEmail(inputs.email)) {
                     const newItem = cart.map((item) => ({ pro_id: item.product._id, quantity: item.quantity }))
-                    const data ={
+                    const data = {
                         items: newItem,
                         ...inputs, user: user._id
                     }
@@ -109,13 +111,17 @@ const Cart = () => {
                         orderApi(data, {}).then(() => {
                             document.getElementById("close_model").click()
                             navigate("/status")
+                        }).catch(() => {
+
+                            navigate("/status?vnp_ResponseCode==11")
                         })
+
                     } else {
                         bankingAPi({
                             amount: total,
                             bankCode: "",
                             language: "vn",
-                            data:data
+                            data: data
                         }).then(({ data }) => {
                             window.location.href = data
                         })
@@ -186,7 +192,7 @@ const Cart = () => {
 
                                                         <tr>
                                                             <td className="li-product-remove"><a onClick={(e) => handleDeleteToCart(e, item._id)} href="#" ><i className="fa fa-times" style={{ fontSize: 24 }} /></a></td>
-                                                            <td className="li-product-thumbnail"><Link to={`/product/${item.product._id}`}><img style={{width:200}} src={getImageProduct(item.product.image)} /></Link></td>
+                                                            <td className="li-product-thumbnail"><Link to={`/product/${item.product._id}`}><img style={{ width: 200 }} src={getImageProduct(item.product.image)} /></Link></td>
                                                             <td className="li-product-name"><Link to={`/product/${item.product._id}`}>{item.product.name}</Link></td>
                                                             <td className="li-product-price"><span className="amount">{VND.format(giagiam)}</span></td>
                                                             <td className="quantity">
@@ -194,7 +200,7 @@ const Cart = () => {
                                                                 <div className="cart-plus-minus">
                                                                     <input id={item._id} className="cart-plus-minus-box" value={item.quantity} type="text" />
                                                                     <div onClick={() => downQty(item.product._id, item._id)} className="dec qtybutton"><i className="fa fa-angle-down" /></div>
-                                                                    <div onClick={() => upQty(item.product._id, item._id)} className="inc qtybutton"><i className="fa fa-angle-up" /></div>
+                                                                    <div onClick={() => upQty(item.product._id, item._id,item.product.quantity)} className="inc qtybutton"><i className="fa fa-angle-up" /></div>
                                                                 </div>
                                                             </td>
                                                             <td className="product-subtotal"><span className="amount">{VND.format(item.quantity * giagiam)}</span></td>
@@ -348,7 +354,7 @@ const Cart = () => {
                                                     </div>
 
                                                     <div onClick={handleClickPay} className="pttt active">
-                                                        <input onClick={handleClickParent} style={{cursor:"pointer"}} checked type="radio" id="cod" name="pay" value="cod" className="pttt_check" />
+                                                        <input onClick={handleClickParent} style={{ cursor: "pointer" }} checked type="radio" id="cod" name="pay" value="cod" className="pttt_check" />
                                                         <img onClick={handleClickParent} src="https://cdn-icons-png.flaticon.com/512/9442/9442701.png" alt="ảnh" />
                                                         <div onClick={handleClickParent} className="pttt_title" >
                                                             <p>
@@ -361,7 +367,7 @@ const Cart = () => {
 
                                                     </div>
                                                     <div onClick={handleClickPay} className="pttt">
-                                                        <input onClick={handleClickParent} style={{cursor:"pointer"}} type="radio" name="pay" value="vnpay" className="pttt_check" />
+                                                        <input onClick={handleClickParent} style={{ cursor: "pointer" }} type="radio" name="pay" value="vnpay" className="pttt_check" />
                                                         <img onClick={handleClickParent} src="https://1office.vn/wp-content/uploads/2020/06/logo_vnpay.png" alt="ảnh" />
                                                         <div onClick={handleClickParent} className="pttt_title" >
                                                             <p>

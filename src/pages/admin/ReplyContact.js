@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom"
 import { getContactDetail, replyContact } from "../../services/Api";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const ReplyContact = () => {
     const { id } = useParams();
@@ -67,7 +69,17 @@ const ReplyContact = () => {
                                         </div>
                                         <div className="form-group">
                                             <label>Nội dung</label>
-                                            <textarea rows={10} name="message" placeholder="Nhập nội dung ..." onChange={onChangInput} value={inputs.message || ""} type="text" className="form-control" />
+                                            <CKEditor
+                                            editor={ClassicEditor}
+                                            data={inputs.message || ""}
+                                            onReady={editor => {
+                                                // You can store the "editor" and use when it is needed.
+                                            }}
+                                            onChange={(event, editor) => {
+                                                setMessage("")
+                                                setInputs({ ...inputs, message: editor.getData() })
+                                            }}
+                                        />
                                         </div>
                                         <button name="sbm" onClick={handleClickSend} type="submit" className="btn btn-success">Gửi</button>
                                         <button onClick={(e) => { e.preventDefault(); setInputs({}) }} className="btn btn-default">Làm mới</button>

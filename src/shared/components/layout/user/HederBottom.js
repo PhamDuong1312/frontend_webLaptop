@@ -13,7 +13,7 @@ const HeaderBottom = () => {
         }).then(({ data }) => {
             setCategory(data.data)
         })
-    })
+    },[])
     return (
         <>
             <div className="header-bottom header-sticky d-none d-lg-block d-xl-block">
