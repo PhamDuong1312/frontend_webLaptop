@@ -178,14 +178,22 @@ const User = () => {
                                                 {users.map((user, index) => {
                                                     return (
                                                         <tr >
-                                                            <td><input type="checkbox" onChange={handleChangeItem} value={user._id} name="items[]" className="checkitem" /></td>
+                                                            <td>{!user.isAdmin?
+                                                                <input type="checkbox" onChange={handleChangeItem} value={user._id} name="items[]" className="checkitem" />:''}</td>
                                                             <td >{index + 1}</td>
                                                             <td >{user.fullName}</td>
                                                             <td >{user.email}</td>
                                                             <td >{user.isAdmin ? <span class="label label-danger">Admin</span> : <span className="label label-warning">Member</span>}</td>
                                                             <td className="form-group" style={{}}>
+                                                            {!user.isAdmin ?<>
                                                                 <Link to={`/users/edit/${user._id}`} className="btn btn-primary"><i className="glyphicon glyphicon-pencil" /></Link>
                                                                 <a href="/" onClick={(e) => handdleDelete(e, user._id)} className="btn btn-danger"><i className="glyphicon glyphicon-remove" /></a>
+                                                            </>:
+                                                            <>
+                                                            <span style={{cursor:"no-drop"}} className="btn btn-primary disabled "><i className="glyphicon glyphicon-pencil" /></span>
+                                                                <span style={{cursor:"no-drop"}} className="btn btn-danger disabled"><i className="glyphicon glyphicon-remove" /></span>
+                                                            </>
+                                                                }
                                                             </td>
                                                         </tr>
                                                     )

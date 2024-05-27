@@ -192,7 +192,11 @@ const ProductDetail = () => {
                                                     <div onClick={upInputQty} className="inc qtybutton"><i className="fa fa-angle-up" /></div>
                                                 </div>
                                             </div>
-                                            <button className="add-to-cart" onClick={handleAddToCart} type="submit">Thêm vào giỏ hàng</button>
+                                            {product.quantity>0?
+                                                <button className="add-to-cart" onClick={handleAddToCart} type="submit">Thêm vào giỏ hàng</button>
+                                            :
+                                            <button className="add-to-cart" style={{cursor:'not-allowed'}} disabled type="submit">Thêm vào giỏ hàng</button>
+                                            }
                                         </form>
                                     </div>
                                     <div className="product-additional-info pt-25">

@@ -165,7 +165,7 @@ const Cart = () => {
                           17" alt style={{ width: '30%' }} className="heading__cart-not-img" />
                 </div>
                 <div className="error-button text-center mb-40">
-                    <Link to="/">Thêm sản phẩm ngay !</Link>
+                    <Link to="/products">Thêm sản phẩm ngay !</Link>
                 </div></>
                 :
                 <div className="Shopping-cart-area pt-60 pb-60">

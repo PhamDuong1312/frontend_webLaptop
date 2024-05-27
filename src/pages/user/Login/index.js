@@ -50,11 +50,11 @@ const Login = () => {
                 apiLogin({email:data.data.email,password:data.data.password})
                     .then(({ data }) => {
                         if (data.user) {
+                            navigate('/')
                             dispatch({
                                 type: LOGIN_SUCCESS,
                                 payload: data.user
                             })
-                            navigate('/')
                         } else {
                             setMessage(<div className="alert alert-danger">Tài khoản hoặc mật khẩu không chính xác !</div>)
                         }
